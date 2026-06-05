@@ -14,6 +14,7 @@ export class ChatService {
     }
 
     async sendMessage(userId: number, chatId: number, content: string) {
+        console.log("Test")
         return this.prisma.message.create({
             data: {
             content,
@@ -22,7 +23,7 @@ export class ChatService {
             },
         });
     }
-
+ 
     async getUserChats(userId: number){
         return this.prisma.chat.findMany({
             where: {userId},
