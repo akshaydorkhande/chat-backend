@@ -21,5 +21,20 @@ export class ChatService {
             userId,
             },
         });
-        }
+    }
+
+    async getUserChats(userId: number){
+        return this.prisma.chat.findMany({
+            where: {userId},
+            orderBy: {createdAt: 'desc'}
+        })
+    }
+
+    async getMessages(chatId : number){
+        return this.prisma.message.findMany({
+            where : { chatId },
+            orderBy : {createdAt : 'asc'}
+        })
+    }
+
 }
